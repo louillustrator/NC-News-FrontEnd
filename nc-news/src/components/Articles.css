@@ -1,3 +1,19 @@
+.container {
+  border: 1px solid red;
+  display: flex;
+  /* flex-flow: row wrap; */
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .article {
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  border: 1px solid blue;
+  width: 30%;
+  height: 500px;
+  display: flex;
+
   text-align: center;
 }

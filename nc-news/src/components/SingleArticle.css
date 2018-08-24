@@ -1,0 +1,36 @@
+.single-article {
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid red;
+
+  align-items: center;
+  width: 100%;
+
+  flex-direction: column;
+}
+
+.title {
+  font-family: "Open Sans", sans-serif;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin: 20px;
+}
+
+.body {
+  font-family: "Open Sans", sans-serif;
+  width: 125vh;
+}
+
+img {
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.comment-daddy {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

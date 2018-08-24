@@ -2,69 +2,60 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./Articles.css";
 import ArticleBox from "./ArticleBox";
+import * as api from "../api";
+
+import { Link } from "react-router-dom";
 
 class Articles extends Component {
   state = {
     articles: []
   };
   render() {
-    console.log("rendering");
     return (
-      <div className="article">
+      <div className="container">
         {this.state.articles.map(article => {
           return (
-            <div>
-              <ArticleBox article={article} />
+            <div className="article" key={article._id}>
+              <div>
+                <Link to={`${article.belongs_to}/${article._id}`}>
+                  <ArticleBox article={article} />
+                </Link>
+              </div>
             </div>
           );
         })}
       </div>
     );
   }
+  //the link here uses a topic, which we have access to so we don't need to try and match the props
 
   componentDidMount() {
-    const { topic } = this.props.match.params;
-    if (!topic) {
-      axios
-        .get(`https://lou-nc-news.herokuapp.com/api/articles`)
-        .then(articles => {
-          this.setState({
-            articles: articles.data.articlesCounted
-          });
-        });
-    } else {
-      axios
-        .get(`https://lou-nc-news.herokuapp.com/api/topics/${topic}/articles`)
-        .then(articles => {
-          this.setState({
-            articles: articles.data.article
-          });
-        });
-    }
+    this.updateArticles();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      const { topic } = this.props.match.params;
-      if (!topic) {
-        axios
-          .get(`https://lou-nc-news.herokuapp.com/api/articles`)
-          .then(articles => {
-            this.setState({
-              articles: articles.data.articlesCounted
-            });
-          });
-      } else {
-        axios
-          .get(`https://lou-nc-news.herokuapp.com/api/topics/${topic}/articles`)
-          .then(articles => {
-            this.setState({
-              articles: articles.data.article
-            });
-          })
-          .catch(console.log);
-      }
+      this.updateArticles();
     }
   }
+  updateArticles = () => {
+    const { topic } = this.props.match.params;
+    if (!topic) {
+      api.fetchArticles().then(res => {
+        this.setState({
+          articles: res
+        });
+      });
+    } else {
+      api
+        .fetchArticleByTopic(topic)
+        .then(res => {
+          this.setState({
+            articles: res
+          });
+        })
+        .catch(console.log);
+    }
+  };
 }
 export default Articles;

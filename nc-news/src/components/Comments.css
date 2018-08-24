@@ -1,0 +1,24 @@
+.comments {
+  border: 0.5px solid #c7ecee;
+  display: flex;
+  max-width: 150vh;
+  min-width: 100vh;
+  min-height: 15vh;
+  justify-content: space-between;
+}
+
+.created-by {
+  align-self: flex-start;
+}
+
+.comment-body {
+  border: 0.5px solid #c7ecee;
+  padding: 50px;
+  margin: 30px;
+  align-self: center;
+}
+
+.comment-votes {
+  flex-direction: row;
+  align-self: flex-end;
+}

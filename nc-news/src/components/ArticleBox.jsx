@@ -1,15 +1,17 @@
 import React from "react";
+import "./ArticleBox.css";
 
 const ArticleBox = ({ article }) => {
-  console.log(article);
   return (
     <div>
       <br />
       {article.title}
       <br />
-      {article.comment_count}
-
-      {article.votes}
+      {article.created_by.name}
+      <br />
+      comments: {article.comment_count}
+      <br />
+      votes: {article.votes}
       <br />
     </div>
   );
