@@ -1,5 +1,5 @@
 .comments {
-  border: 0.5px solid #c7ecee;
+  border: 0.5px solid #95afc0;
   display: flex;
   max-width: 150vh;
   min-width: 100vh;
@@ -7,18 +7,38 @@
   justify-content: space-between;
 }
 
-.created-by {
-  align-self: flex-start;
+.single-article-box {
+  display: flex;
+  border: 1px solid blue;
+  height: 250px;
+  justify-content: center;
 }
 
-.comment-body {
+.comment-p {
+}
+
+.comment-p-body {
+  min-width: 50%;
   border: 0.5px solid #c7ecee;
   padding: 50px;
-  margin: 30px;
+
   align-self: center;
 }
 
-.comment-votes {
-  flex-direction: row;
-  align-self: flex-end;
+.comment-p-votes {
+  align-self: center;
+  padding: 20px;
+}
+
+.date {
+  display: flex;
+}
+.comment-btn {
+  background-color: #22a6b3;
+
+  color: white;
+  text-align: center;
+
+  padding: 15px 25px;
+  height: 70px;
 }

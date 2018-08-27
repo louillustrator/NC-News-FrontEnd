@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import NoMatch from "./components/NoMatch";
 
 class App extends Component {
   state = {
@@ -17,25 +18,41 @@ class App extends Component {
           </header>
         </div>
         <nav className="nav-bar">
-          <NavLink exact to={"/"}>
+          <NavLink
+            style={{ textDecoration: "none", color: " #797e81" }}
+            exact
+            to={"/"}
+          >
             Home
             {"  |  "}
           </NavLink>
-          <NavLink exact to={"/cooking"}>
+          <NavLink
+            style={{ textDecoration: "none", color: " #797e81" }}
+            exact
+            to={"/cooking"}
+          >
             Cooking {"  |  "}
           </NavLink>
-          <NavLink exact to={"/football"}>
+          <NavLink
+            style={{ textDecoration: "none", color: " #797e81" }}
+            exact
+            to={"/football"}
+          >
             Football
             {"  |  "}
           </NavLink>
-          <NavLink exact to={"/coding"}>
+          <NavLink
+            style={{ textDecoration: "none", color: " #797e81" }}
+            exact
+            to={"/coding"}
+          >
             Coding
           </NavLink>
         </nav>
-        <Route exact path="/:topic" component={Articles} />
         <Route exact path="/" component={Articles} />
-        <Route exact path={"/:topic/:article_id"} component={SingleArticle} />
-        {/* we can use the url props to access what the user has typed in the add bar*/}
+        <Route exact path="/:topic" component={Articles} />
+        <Route exact path="/:topic/:article_id" component={SingleArticle} />
+        <Route path="/404" component={NoMatch} />
       </div>
     );
   }

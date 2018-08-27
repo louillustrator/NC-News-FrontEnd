@@ -1,32 +1,37 @@
 .big-div {
+  background-color: #d9dadb;
 }
 
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-header {
-  background-color: #535c68;
-
+  font-family: "Open Sans", sans-serif;
+  background-color: #e48519;
+  text-align: center;
   align-items: center;
   height: 100px;
   padding: 20px;
   color: white;
   min-width: 80%;
+  font-size: 1.7em;
 
   flex-wrap: wrap;
 }
 
 .nav-bar {
+  font-family: "Open Sans", sans-serif;
   align-items: center;
-  height: 30px;
+  height: 40px;
 
   width: 100%;
   display: flex;
   text-align: center;
-  background-color: #95afc0;
+  background-color: white;
 
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 60px;
 }

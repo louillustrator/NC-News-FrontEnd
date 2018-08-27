@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../api";
 import "./Comments.css";
 import Votes from "./Votes";
+import moment from "moment";
 
 class Comments extends Component {
   state = {
@@ -15,21 +16,34 @@ class Comments extends Component {
     ) : (
       this.state.comments.map(comment => {
         return (
-          <div key={comment._id} className="comments">
-            <p className="created-by">
-              created by:
+          <div key={comment._id} className="single-article-box">
+            <p className="comment-p">
+              {" "}
+              created
+              {"   "} by:
               {"   "}
-              {comment.created_by.username}
+              {comment.created_by.username} <br />
+              {moment(comment.created_at).fromNow()}
             </p>
+
             <br />
             <br />
 
-            <p className="comment-body">{comment.body}</p>
+            <p className="comment-p-body">{comment.body}</p>
             <br />
-            <div className="comment-votes">
-              <Votes votes={comment.votes} id={comment._id} />
-            </div>
-            <button onClick={this.handleDelete(comment._id)}>delete</button>
+
+            <Votes
+              className="comment-p-votes"
+              votes={comment.votes}
+              id={comment._id}
+            />
+
+            <button
+              className="comment-btn"
+              onClick={this.handleDelete(comment._id)}
+            >
+              delete
+            </button>
           </div>
         );
       })
@@ -39,6 +53,9 @@ class Comments extends Component {
   componentDidMount() {
     const articleId = this.props.articleId;
     api.fetchCommentsById(articleId).then(comments => {
+      comments.sort((a, b) => {
+        return b.created_at > a.created_at || -(b.created_at < a.created_at);
+      });
       this.setState({
         comments,
         loading: false
@@ -49,7 +66,7 @@ class Comments extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.newComment !== prevProps.newComment) {
       this.setState({
-        comments: [...this.state.comments, this.props.newComment]
+        comments: [this.props.newComment, ...this.state.comments]
       });
     }
   }

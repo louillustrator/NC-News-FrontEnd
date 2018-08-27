@@ -1,5 +1,4 @@
 .container {
-  border: 1px solid red;
   display: flex;
   /* flex-flow: row wrap; */
   flex-wrap: wrap;
@@ -7,13 +6,33 @@
 }
 
 .article {
-  justify-content: center;
   align-items: center;
   margin: 20px;
-  border: 1px solid blue;
+  border-radius: 5%;
   width: 30%;
-  height: 500px;
-  display: flex;
+  height: 600px;
 
+  display: flex;
+  overflow: hidden;
   text-align: center;
+  background-color: white;
+}
+
+.article h4 {
+  color: #130f40;
+  padding: 5px;
+}
+
+.article p {
+  padding: 10px;
+  color: #130f40;
+  font-size: 15px;
+}
+
+.article img {
+  overflow: hidden;
+  align-self: flex-start;
+  margin: auto;
+
+  max-width: 100%;
 }

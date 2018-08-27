@@ -1,28 +1,36 @@
 .add-comment {
   border: 0.5px solid red;
   display: flex;
-  flex-wrap: wrap;
+
   justify-content: space-around;
-  /* justify-content: space-between; */
-  flex-direction: row;
-  max-width: 150vh;
+
   min-width: 100vh;
   min-height: 8vh;
-  align-items: center;
+
   max-height: 11vh;
   padding: 30px;
 }
 
+.text {
+  padding: 20px;
+  align-self: flex-start;
+}
+
 .input {
+  align-self: center;
   min-width: 90vh;
-  min-height: 10vh;
+  min-height: 9vh;
   max-height: 15vh;
   font-size: 20px;
 }
 
 .post-btn {
   align-self: flex-end;
-  height: 100px;
-  width: 150px;
-  margin: 30px;
+  padding: 15px 32px;
+  height: 70px;
+  background-color: #f9ca24;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
 }

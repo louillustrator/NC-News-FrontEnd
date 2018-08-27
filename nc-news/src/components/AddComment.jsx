@@ -10,8 +10,9 @@ class AddComment extends Component {
   };
   render() {
     return (
-      <div onSubmit={this.handleSubmit} className="add-comment">
-        <form>
+      <div onSubmit={this.handleSubmit}>
+        <form className="add-comment">
+          <p className="text">Add comment:</p>
           <input
             className="input"
             type="text"
@@ -20,7 +21,6 @@ class AddComment extends Component {
             value={this.state.body}
             onChange={this.handleChange}
           />
-
           <button type="submit" value="Submit" className="post-btn">
             Post
           </button>

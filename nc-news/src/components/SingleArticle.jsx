@@ -17,37 +17,42 @@ class SingleArticle extends Component {
       <p>loading...</p>
     ) : (
       <div className="single-article">
-        <div className="title">
-          <h1>{this.state.article.title}</h1>
-        </div>
-        <Button
-          votes={this.state.article.votes}
-          articleId={this.props.match.params.article_id}
-        />
+        <h1>{this.state.article.title}</h1>
+
         <img
           src="https://cdn.pixabay.com/photo/2017/06/21/07/33/background-2426329_960_720.jpg"
           alt="circuit board placeholder"
         />
-        <br />
+        <Button
+          className="btn"
+          votes={this.state.article.votes}
+          articleId={this.props.match.params.article_id}
+        />
+
         <p>Comments: {this.state.article.comment_count}</p>
         <p>
           Created by: {""}
           {this.state.article.created_by.username}
         </p>
-        <div className="body">
-          <p>{this.state.article.body}</p>
-        </div>
+        <p className="body">{this.state.article.body}</p>
 
-        <div className="comment-daddy">
-          <AddComment
-            articleId={this.state.article._id}
-            getNewComment={this.getNewComment}
-          />
-          <Comments
-            articleId={this.state.article._id}
-            newComment={this.state.newComment}
-          />
-        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <AddComment
+          articleId={this.state.article._id}
+          getNewComment={this.getNewComment}
+        />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Comments
+          articleId={this.state.article._id}
+          newComment={this.state.newComment}
+        />
       </div>
     );
   }
