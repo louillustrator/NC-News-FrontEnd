@@ -4,7 +4,6 @@ const URL = "https://lou-nc-news.herokuapp.com/api";
 export const errorCatcher = apiCallFn => {
   return (...args) =>
     apiCallFn(...args).catch(err => {
-      console.log(err);
       let message;
       if (err.response.status === 400)
         message =
@@ -68,4 +67,12 @@ export const deleteComment = errorCatcher(commentId => {
   return axios.delete(`${URL}/comments/${commentId}`).then(res => {
     return res.data.msg;
   });
+});
+
+export const addArticle = errorCatcher((article, belongs_to) => {
+  return axios
+    .post(`${URL}/topics/${belongs_to}/articles`, article)
+    .then(res => {
+      return res;
+    });
 });

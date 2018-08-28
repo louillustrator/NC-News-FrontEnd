@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import "./Articles.css";
 import ArticleBox from "./ArticleBox";
@@ -53,12 +54,15 @@ class Articles extends Component {
     if (!topic) {
       api.fetchArticles().then(res => {
         if (res.type === "error") {
-          console.log(res);
-
           this.setState({
             error: res
           });
         } else {
+          res.sort((a, b) => {
+            return (
+              b.created_at > a.created_at || -(b.created_at < a.created_at)
+            );
+          });
           this.setState({
             articles: res
           });
@@ -67,12 +71,15 @@ class Articles extends Component {
     } else {
       api.fetchArticleByTopic(topic).then(res => {
         if (res.type === "error") {
-          console.log(res);
-
           this.setState({
             error: res
           });
         } else {
+          res.sort((a, b) => {
+            return (
+              b.created_at > a.created_at || -(b.created_at < a.created_at)
+            );
+          });
           this.setState({
             articles: res
           });
@@ -81,4 +88,11 @@ class Articles extends Component {
     }
   };
 }
+
+Articles.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
+};
+
 export default Articles;

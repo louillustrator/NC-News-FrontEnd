@@ -1,5 +1,6 @@
 import React from "react";
 import "./ArticleBox.css";
+import moment from "moment";
 
 const ArticleBox = ({ article }) => {
   return (
@@ -10,7 +11,6 @@ const ArticleBox = ({ article }) => {
       <p>
         {" "}
         {article.body.replace(/^(.{100}[^\s]*).*/, "$1")}
-        {/* {article.created_by.name} */}
         <br />
       </p>
       {article.belongs_to === "coding" && (
@@ -32,9 +32,14 @@ const ArticleBox = ({ article }) => {
         />
       )}
       <br />
-      <p>
+      <p className="info">
         comments: {article.comment_count} {"       "}
-        votes: {article.votes}
+        votes: {article.votes} {"       "}
+      </p>
+      <p>
+        posted: {moment(article.created_at).fromNow()}
+        <br />
+        created by: {article.created_by.name}
         <br />
       </p>
     </div>

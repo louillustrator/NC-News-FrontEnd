@@ -4,15 +4,25 @@ import "./SingleArticle.css";
 import Button from "./Button";
 import Comments from "./Comments";
 import AddComment from "./AddComment";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 class SingleArticle extends Component {
   state = {
     article: {},
     loading: true,
-    newComment: {}
+    newComment: {},
+    error: null
   };
   //we have a checker to make sure state has the article in before it all loads up, else a little message shows
   render() {
+    if (this.state.error)
+      return (
+        <Redirect
+          to={{ pathname: "/404", state: { error: this.state.error } }}
+        />
+      );
+
     return this.state.loading ? (
       <p>loading...</p>
     ) : (
@@ -59,19 +69,35 @@ class SingleArticle extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.article_id;
-    api.fetchArticleById(id).then(article => {
-      this.setState({
-        article,
-        loading: false
-      });
+    api.fetchArticleById(id).then(res => {
+      if (res.type === "error") {
+        this.setState({
+          error: res
+        });
+      } else {
+        this.setState({
+          article: res,
+          loading: false
+        });
+      }
     });
   }
 
-  getNewComment = comment => {
-    this.setState({
-      newComment: comment
-    });
+  getNewComment = res => {
+    if (res.type === "error") {
+      this.setState({
+        error: res
+      });
+    } else {
+      this.setState({
+        newComment: res
+      });
+    }
   };
 }
+
+SingleArticle.propTypes = {
+  match: PropTypes.object.isRequired
+};
 
 export default SingleArticle;

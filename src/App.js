@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect, Link } from "react-router-dom";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import NoMatch from "./components/NoMatch";
+import PostArticle from "./components/PostArticle";
 
 class App extends Component {
   state = {
-    articleId: []
+    articleId: [],
+    clicked: false
   };
   render() {
     return (
@@ -49,13 +51,36 @@ class App extends Component {
             Coding
           </NavLink>
         </nav>
-        <Route exact path="/" component={Articles} />
-        <Route exact path="/:topic" component={Articles} />
-        <Route exact path="/:topic/:article_id" component={SingleArticle} />
-        <Route path="/404" component={NoMatch} />
+        <h2 className="brain-header">Goodness for your brain</h2>
+        <h4 className="mini-header">
+          The latest news in cooking, coding and football
+        </h4>
+        {this.state.clicked === false && (
+          <Link to="/post-article">
+            <button onClick={this.handleClick} className="post">
+              Post article!
+            </button>
+          </Link>
+        )}
+        <br />
+        <br />
+
+        <Switch>
+          <Route exact path="/" component={Articles} />
+          <Route exact path="/post-article" component={PostArticle} />
+          <Route path="/404" component={NoMatch} />
+          <Route exact path="/:topic" component={Articles} />
+
+          <Route exact path="/:topic/:article_id" component={SingleArticle} />
+        </Switch>
       </div>
     );
   }
+  handleClick = () => {
+    this.setState({
+      clicked: true
+    });
+  };
 }
 
 export default App;

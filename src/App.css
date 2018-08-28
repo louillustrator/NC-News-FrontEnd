@@ -35,3 +35,31 @@
   margin-right: auto;
   margin-bottom: 60px;
 }
+
+.brain-header {
+  padding: 10px;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+  color: #6a6c6e;
+}
+
+.mini-header {
+  font-family: "Open Sans", sans-serif;
+  color: #6a6c6e;
+  display: flex;
+  justify-content: center;
+}
+
+.post {
+  border: 1px solid red;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  width: 150px;
+  margin-top: 0;
+}

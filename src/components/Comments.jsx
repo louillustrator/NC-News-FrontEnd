@@ -3,6 +3,7 @@ import * as api from "../api";
 import "./Comments.css";
 import Votes from "./Votes";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 class Comments extends Component {
   state = {
@@ -53,13 +54,15 @@ class Comments extends Component {
   componentDidMount() {
     const articleId = this.props.articleId;
     api.fetchCommentsById(articleId).then(comments => {
-      comments.sort((a, b) => {
-        return b.created_at > a.created_at || -(b.created_at < a.created_at);
-      });
-      this.setState({
-        comments,
-        loading: false
-      });
+      if (comments.type !== "error") {
+        comments.sort((a, b) => {
+          return b.created_at > a.created_at || -(b.created_at < a.created_at);
+        });
+        this.setState({
+          comments,
+          loading: false
+        });
+      }
     });
   }
 
@@ -88,5 +91,9 @@ class Comments extends Component {
     };
   };
 }
+Comment.PropTypes = {
+  articleId: PropTypes.object.isRequired,
+  newComment: PropTypes.object.isRequired
+};
 
 export default Comments;

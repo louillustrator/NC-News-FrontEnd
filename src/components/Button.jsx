@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import PropTypes from "prop-types";
 
 class Button extends Component {
   state = {
@@ -38,5 +39,10 @@ class Button extends Component {
     });
   };
 }
+
+Button.propTypes = {
+  articleId: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired
+};
 
 export default Button;
