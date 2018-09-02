@@ -15,19 +15,19 @@ const ArticleBox = ({ article }) => {
       </p>
       {article.belongs_to === "coding" && (
         <img
-          src="https://images.pexels.com/photos/8264/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+          src={require("../images/typing.jpg")}
           alt="hands typing on a keybaord"
         />
       )}
       {article.belongs_to === "cooking" && (
         <img
-          src="https://images.pexels.com/photos/271458/pexels-photo-271458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+          src={require("../images/cooking.jpeg")}
           alt="hands rolling out dough"
         />
       )}
       {article.belongs_to === "football" && (
         <img
-          src="https://images.pexels.com/photos/54567/pexels-photo-54567.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+          src={require("../images/football grass.jpeg")}
           alt="close up of a white line in the pitch grass"
         />
       )}

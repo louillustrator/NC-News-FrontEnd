@@ -2,9 +2,9 @@
   background-color: #d9dadb;
 }
 
-/* .App {
-  text-align: center;
-} */
+.App {
+  width: 100%;
+}
 
 .App-header {
   font-family: "Open Sans", sans-serif;
@@ -14,8 +14,10 @@
   height: 100px;
   padding: 20px;
   color: white;
-  min-width: 80%;
+  min-width: 100%;
   font-size: 1.7em;
+  margin: 0px;
+  border: 0px;
 
   flex-wrap: wrap;
 }
@@ -23,7 +25,7 @@
 .nav-bar {
   font-family: "Open Sans", sans-serif;
   align-items: center;
-  height: 40px;
+  height: 50px;
 
   width: 100%;
   display: flex;

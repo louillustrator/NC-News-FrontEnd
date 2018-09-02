@@ -1,50 +1,23 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import "./Comments.css";
-import Votes from "./Votes";
-import moment from "moment";
+
 import PropTypes from "prop-types";
+import SingleComment from "./SingleComment";
 
 class Comments extends Component {
   state = {
     comments: [],
-    loading: true,
     loggedInUser: "5b64860cb670dd0ebdef5003"
   };
   render() {
-    return this.state.loading ? (
-      <p>Fetching comments....</p>
+    return this.state.comments < 1 ? (
+      <p>No comments here yet....</p>
     ) : (
       this.state.comments.map(comment => {
         return (
           <div key={comment._id} className="single-article-box">
-            <p className="comment-p">
-              {" "}
-              created
-              {"   "} by:
-              {"   "}
-              {comment.created_by.username} <br />
-              {moment(comment.created_at).fromNow()}
-            </p>
-
-            <br />
-            <br />
-
-            <p className="comment-p-body">{comment.body}</p>
-            <br />
-
-            <Votes
-              className="comment-p-votes"
-              votes={comment.votes}
-              id={comment._id}
-            />
-
-            <button
-              className="comment-btn"
-              onClick={this.handleDelete(comment._id)}
-            >
-              delete
-            </button>
+            <SingleComment comment={comment} handleDelete={this.handleDelete} />
           </div>
         );
       })
@@ -59,8 +32,7 @@ class Comments extends Component {
           return b.created_at > a.created_at || -(b.created_at < a.created_at);
         });
         this.setState({
-          comments,
-          loading: false
+          comments
         });
       }
     });
@@ -74,7 +46,6 @@ class Comments extends Component {
     }
   }
 
-  //optimistic rendering
   handleDelete = commentId => {
     return () => {
       api.deleteComment(commentId).then(msg => {

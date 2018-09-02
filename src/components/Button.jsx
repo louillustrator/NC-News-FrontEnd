@@ -4,10 +4,12 @@ import PropTypes from "prop-types";
 
 class Button extends Component {
   state = {
-    votes: 0
+    votes: 0,
+    error: null
   };
 
   render() {
+    if (this.state.error) return this.state.error;
     return (
       <div className="voting">
         <p>
@@ -32,10 +34,15 @@ class Button extends Component {
   }
 
   voteOnArticle = direction => {
+    this.setState({
+      votes: this.state.votes + (direction === "up" ? 1 : -1)
+    });
     api.updateVote(this.props.articleId, direction).then(voteCount => {
-      this.setState({
-        votes: this.state.votes + (direction === "up" ? 1 : -1)
-      });
+      if (typeof voteCount !== "number") {
+        this.setState({
+          error: "oops, your vote didn't register, refresh and try again"
+        });
+      }
     });
   };
 }

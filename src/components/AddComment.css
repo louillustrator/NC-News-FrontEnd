@@ -1,24 +1,28 @@
 .add-comment {
-  border: 0.5px solid red;
   display: flex;
-
-  justify-content: space-around;
-
-  min-width: 100vh;
-  min-height: 8vh;
-
-  max-height: 11vh;
-  padding: 30px;
+  border-radius: 15px;
+  border: 0.5px solid #95afc0;
+  width: 75%;
+  height: 250px;
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .text {
+  font-family: "Open Sans", sans-serif;
   padding: 20px;
   align-self: flex-start;
+  font-size: 25px;
 }
 
 .input {
+  font-family: "Open Sans", sans-serif;
   align-self: center;
-  min-width: 90vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  width: 50%;
   min-height: 9vh;
   max-height: 15vh;
   font-size: 20px;
@@ -26,6 +30,8 @@
 
 .post-btn {
   align-self: flex-end;
+  font-family: "Open Sans", sans-serif;
+  margin: 90px;
   padding: 15px 32px;
   height: 70px;
   background-color: #f9ca24;

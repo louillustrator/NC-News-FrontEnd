@@ -18,7 +18,7 @@ class AddComment extends Component {
             className="input"
             type="text"
             name="comment"
-            placeholder="Got summet to say?"
+            placeholder="Your comment here..."
             value={this.state.body}
             onChange={this.handleChange}
           />

@@ -30,7 +30,7 @@ class SingleArticle extends Component {
         <h1>{this.state.article.title}</h1>
 
         <img
-          src="https://cdn.pixabay.com/photo/2017/06/21/07/33/background-2426329_960_720.jpg"
+          src={require("../images/computpr.jpeg")}
           alt="circuit board placeholder"
         />
         <Button

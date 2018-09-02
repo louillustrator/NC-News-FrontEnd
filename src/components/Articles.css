@@ -1,6 +1,8 @@
 .container {
   display: flex;
   /* flex-flow: row wrap; */
+
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-around;
 }
@@ -10,7 +12,8 @@
   margin: 20px;
   border-radius: 5%;
   width: 30%;
-  height: 620px;
+  max-height: 600px;
+  height: 580px;
 
   display: flex;
   overflow: hidden;
@@ -34,6 +37,6 @@
   overflow: hidden;
   align-self: flex-start;
   margin: auto;
-
-  max-width: 100%;
+  min-height: 100px;
+  width: 100%;
 }
