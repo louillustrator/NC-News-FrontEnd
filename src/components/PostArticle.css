@@ -84,3 +84,8 @@
   background-color: white;
   color: #e48519;
 }
+
+.post-article-btn:disabled {
+  background-color: #a5b1c2;
+  cursor: not-allowed;
+}

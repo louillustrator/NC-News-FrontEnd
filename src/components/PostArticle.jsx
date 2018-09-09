@@ -9,7 +9,8 @@ class PostArticle extends Component {
     body: "",
     belongs_to: "",
     created_by: "5b64860cb670dd0ebdef5003",
-    posted: false
+    posted: false,
+    disabled: true
   };
   render() {
     if (this.state.posted) return <Redirect to="/" />;
@@ -43,11 +44,16 @@ class PostArticle extends Component {
             className="input-bdy"
             type="text"
             name="body"
-            placeholder="Please enthrall me...what are we writing about today?"
+            placeholder="What are we writing about today?"
             value={this.state.body}
             onChange={this.handleChange}
           />
-          <button type="submit" value="Submit" className="post-article-btn">
+          <button
+            type="submit"
+            value="Submit"
+            className="post-article-btn"
+            disabled={this.state.disabled}
+          >
             Post
           </button>
         </form>
@@ -59,24 +65,27 @@ class PostArticle extends Component {
     let area = event.target.name;
 
     this.setState({
-      [area]: event.target.value
+      [area]: event.target.value,
+      disabled: false
     });
   };
 
   handleSubmit = event => {
-    event.preventDefault();
-    let article = {
-      title: this.state.title,
-      body: this.state.body,
-      created_by: this.state.created_by
-    };
-    api.addArticle(article, this.state.belongs_to).then(res => {
-      if (res.data.message) {
-        this.setState({
-          posted: true
-        });
-      }
-    });
+    if (event) {
+      event.preventDefault();
+      let article = {
+        title: this.state.title,
+        body: this.state.body,
+        created_by: this.state.created_by
+      };
+      api.addArticle(article, this.state.belongs_to).then(res => {
+        if (res.data.message) {
+          this.setState({
+            posted: true
+          });
+        }
+      });
+    }
   };
 }
 
