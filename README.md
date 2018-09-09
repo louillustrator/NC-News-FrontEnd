@@ -20,12 +20,12 @@ Let's get all the software up and running by running the following command.
 This will install the following :
 
 ```js
-    axios: ^0.18.0,
-    material-design-icons: ^3.0.1,
-    moment: ^2.22.2,
-    react: ^16.4.2,
-    react-dom: ^16.4.2,
-    react-router-dom: ^4.3.1,
+    axios: 0.18.0,
+    material-design-icons: 3.0.1,
+    moment: 2.22.2,
+    react: 16.4.2,
+    react-dom: 16.4.2,
+    react-router-dom: 4.3.1,
     react-scripts: 1.1.4
 ```
 
@@ -45,7 +45,8 @@ You will also see any lint errors in the console.
 
 ## Minimum Versions
 
-- React ^16.4.
+- React 16.4
+- Node 8
 
 ## Authors
 

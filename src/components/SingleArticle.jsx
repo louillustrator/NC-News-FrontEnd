@@ -14,7 +14,7 @@ class SingleArticle extends Component {
     newComment: {},
     error: null
   };
-  //we have a checker to make sure state has the article in before it all loads up, else a little message shows
+
   render() {
     if (this.state.error)
       return (
