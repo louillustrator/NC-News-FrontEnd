@@ -14,7 +14,7 @@
   height: 100px;
   padding: 20px;
   color: white;
-  min-width: 100%;
+
   font-size: 1.7em;
   margin: 0px;
   border: 0px;
@@ -33,9 +33,10 @@
   background-color: white;
 
   justify-content: center;
+
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .brain-header {
@@ -54,14 +55,24 @@
   justify-content: center;
 }
 
-.post {
-  border: 1px solid red;
-  display: flex;
-  padding: 10px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  height: 80px;
-  width: 150px;
-  margin-top: 0;
+.article-btn {
+  display: absolute;
+
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 20px;
+  background-color: #2db1bd;
+  padding: 20px;
+  border: none;
+  color: white;
+  text-align: center;
+
+  font-size: 17px;
+
+  cursor: pointer;
+}
+
+.article-btn:hover {
+  background-color: white;
+  color: #2db1bd;
 }

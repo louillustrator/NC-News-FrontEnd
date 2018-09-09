@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../App.css";
 
 const Header = () => {
@@ -21,6 +21,7 @@ const Header = () => {
         if (linkName === "home") {
           return (
             <NavLink
+              key={linkName}
               style={{ textDecoration: "none", color: " #797e81" }}
               exact
               to={"/"}
@@ -33,6 +34,7 @@ const Header = () => {
         }
         return (
           <NavLink
+            key={linkName}
             style={{ textDecoration: "none", color: " #797e81" }}
             exact
             to={`/${linkName}`}

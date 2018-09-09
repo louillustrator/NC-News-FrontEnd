@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch, Redirect, Link } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import NoMatch from "./components/NoMatch";
@@ -17,16 +17,19 @@ class App extends Component {
       <div className="big-div">
         <div className="App">
           <Header />
+
           <h2 className="brain-header">Goodness for your brain</h2>
           <h4 className="mini-header">
             The latest news in cooking, coding and football
           </h4>
           {this.state.clicked === false && (
-            <Link to="/post-article">
-              <button onClick={this.handleClick} className="post">
-                Post article!
-              </button>
-            </Link>
+            <div className="brain-header">
+              <Link to="/post-article">
+                <button className="article-btn " onClick={this.handleClick}>
+                  Post article!
+                </button>
+              </Link>
+            </div>
           )}
 
           <br />

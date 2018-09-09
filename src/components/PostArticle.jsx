@@ -17,7 +17,11 @@ class PostArticle extends Component {
     return (
       <div onSubmit={this.handleSubmit}>
         <form className="add-article">
-          <select name="topic" className="topic" onChange={this.handleChange}>
+          <select
+            name="belongs_to"
+            className="topic"
+            onChange={this.handleChange}
+          >
             <option value="" disabled selected>
               Select a topic
             </option>
@@ -27,7 +31,7 @@ class PostArticle extends Component {
           </select>
           <p className="title">Title</p>
           <input
-            className="input"
+            className="input-ttl"
             type="text"
             name="title"
             placeholder="Article title"
@@ -35,11 +39,11 @@ class PostArticle extends Component {
             onChange={this.handleChange}
           />
           <p className="body">Body</p>
-          <input
-            className="input"
+          <textarea
+            className="input-bdy"
             type="text"
             name="body"
-            placeholder="ohh what are we writing about today?"
+            placeholder="Please enthrall me...what are we writing about today?"
             value={this.state.body}
             onChange={this.handleChange}
           />
@@ -52,18 +56,11 @@ class PostArticle extends Component {
   }
 
   handleChange = event => {
-    if (event.target.name === "body")
-      this.setState({
-        body: event.target.value
-      });
-    if (event.target.name === "title")
-      this.setState({
-        title: event.target.value
-      });
-    if (event.target.name === "topic")
-      this.setState({
-        belongs_to: event.target.value
-      });
+    let area = event.target.name;
+
+    this.setState({
+      [area]: event.target.value
+    });
   };
 
   handleSubmit = event => {

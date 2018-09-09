@@ -22,7 +22,12 @@ class AddComment extends Component {
             value={this.state.body}
             onChange={this.handleChange}
           />
-          <button type="submit" value="Submit" className="post-btn">
+          <button
+            type="submit"
+            value="Submit"
+            className="post-btn"
+            disabled={!this.state.body}
+          >
             Post
           </button>
         </form>

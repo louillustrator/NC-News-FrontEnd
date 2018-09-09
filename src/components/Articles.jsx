@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { ClipLoader } from "react-spinners";
 import "./Articles.css";
 import ArticleBox from "./ArticleBox";
 import * as api from "../api";
@@ -10,7 +11,8 @@ import { Link, Redirect } from "react-router-dom";
 class Articles extends Component {
   state = {
     articles: [],
-    error: null
+    error: null,
+    isLoading: true
   };
   render() {
     if (this.state.error)
@@ -19,8 +21,17 @@ class Articles extends Component {
           to={{ pathname: "/404", state: { error: this.state.error } }}
         />
       );
+
     return (
       <div className="container">
+        {this.state.isLoading && (
+          <ClipLoader
+            size={150}
+            color={"#0fb9b1"}
+            loading={this.state.isLoading}
+          />
+        )}
+
         {this.state.articles.map(article => {
           return (
             <div className="article" key={article._id}>
@@ -64,7 +75,8 @@ class Articles extends Component {
             );
           });
           this.setState({
-            articles: res
+            articles: res,
+            isLoading: false
           });
         }
       });
